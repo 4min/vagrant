@@ -19,6 +19,11 @@ module VagrantPlugins
         Config::ChefClient
       end
 
+      config(:chef_client, :provisioner) do
+        require File.expand_path("../config/chef_zero", __FILE__)
+        Config::ChefZero
+      end
+
       provisioner(:chef_solo)   do
         require File.expand_path("../provisioner/chef_solo", __FILE__)
         Provisioner::ChefSolo
@@ -27,6 +32,11 @@ module VagrantPlugins
       provisioner(:chef_client) do
         require File.expand_path("../provisioner/chef_client", __FILE__)
         Provisioner::ChefClient
+      end
+
+      provisioner(:chef_zero) do
+          require File.expand_path("../provisioner/chef_zero", __FILE__)
+          Provisioner::ChefZero
       end
     end
   end
